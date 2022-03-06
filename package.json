@@ -6,7 +6,8 @@
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "test:coverage": "umi-test --coverage",
+    "lint:report": "eslint ./src -f json -o report.json --ext .js,.ts,.jsx,.tsx,.css,.less --ignore-pattern '/src/.umi/**/*'"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -17,6 +18,9 @@
     ],
     "*.ts?(x)": [
       "prettier --parser=typescript --write"
+    ],
+    "*.{.js,ts,jsx,tsx,css,less}": [
+      "eslint ./src -f json --ext .js,.ts,.jsx,.tsx,.css,.less --ignore-pattern '/src/.umi/**/*'"
     ]
   },
   "dependencies": {
@@ -37,7 +41,7 @@
     "eslint-plugin-react": "^7.29.3",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",
-    "typescript": "^4.1.2",
+    "typescript": "4.5.5",
     "yorkie": "^2.0.0"
   }
 }
